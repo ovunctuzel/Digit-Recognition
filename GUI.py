@@ -36,25 +36,25 @@ def get_prediction(img, model):
 
 if __name__ == "__main__":
     held = False
-    epochs = 10
+    epochs = 1
     for epoch in range(1, epochs + 1):
         OCR_CONV.train(epoch)
 
-cv2.namedWindow('Digit Recognition')
-cv2.setMouseCallback('Digit Recognition', draw_circle)
+    cv2.namedWindow('Digit Recognition')
+    cv2.setMouseCallback('Digit Recognition', draw_circle)
 
-img = np.zeros((336, 512, 3), np.uint8)
-clear_img(img)
-model = 5
+    img = np.zeros((336, 512, 3), np.uint8)
+    clear_img(img)
+    model = 5
 
-while (True):
-    cv2.imshow('Digit Recognition', img)
-    key = cv2.waitKey(10)
-    if key & 0xFF == 32:
-        get_prediction(img, model)
-    elif key & 0xFF == 99:
-        clear_img(img)
-    elif key & 0xFF == 27:
-        break
+    while (True):
+        cv2.imshow('Digit Recognition', img)
+        key = cv2.waitKey(10)
+        if key & 0xFF == 32:
+            get_prediction(img, model)
+        elif key & 0xFF == 99:
+            clear_img(img)
+        elif key & 0xFF == 27:
+            break
 
-cv2.destroyAllWindows()
+    cv2.destroyAllWindows()
